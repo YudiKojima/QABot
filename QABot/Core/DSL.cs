@@ -14,12 +14,6 @@ namespace QABot.Core
             driver.FindElement(By.Name(name)).Click();
         }
 
-        public void GoToUrl(string url)
-        {
-            driver.Navigate().GoToUrl(url);
-            driver.Manage().Window.Maximize();
-        }
-
         public string GenerateEmail()
         {
             driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-email-temporario");
