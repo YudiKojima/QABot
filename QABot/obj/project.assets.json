@@ -1058,19 +1058,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marco\\.nuget\\packages\\": {}
+    "C:\\Users\\dev1s\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\marco\\source\\repos\\QABot\\QABot\\QABot.csproj",
+      "projectUniqueName": "C:\\Source\\QABot\\QABot\\QABot\\QABot.csproj",
       "projectName": "QABot",
-      "projectPath": "C:\\Users\\marco\\source\\repos\\QABot\\QABot\\QABot.csproj",
-      "packagesPath": "C:\\Users\\marco\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\marco\\source\\repos\\QABot\\QABot\\obj\\",
+      "projectPath": "C:\\Source\\QABot\\QABot\\QABot\\QABot.csproj",
+      "packagesPath": "C:\\Users\\dev1s\\.nuget\\packages\\",
+      "outputPath": "C:\\Source\\QABot\\QABot\\QABot\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\marco\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dev1s\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1141,7 +1141,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
