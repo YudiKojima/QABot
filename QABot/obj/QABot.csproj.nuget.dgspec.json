@@ -42,7 +42,7 @@
           "dependencies": {
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.5.0, )"
+              "version": "[17.9.0, )"
             },
             "NUnit": {
               "target": "Package",
