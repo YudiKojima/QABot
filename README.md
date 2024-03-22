@@ -21,6 +21,5 @@
 <div align="center">
 
 [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-1f6feb?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/marcosyudikojima/)](https://www.linkedin.com/in/marcosyudikojima/)
-[![GitHub Badge](https://img.shields.io/badge/-GitHub-1f6feb?style=flat-square&logo=GitHub&logoColor=white&link=https://github.com/YudiKojima)](https://github.com/YudiKojima)
 
 </div>
