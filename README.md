@@ -12,5 +12,7 @@
 </p>  
   
 <div align="center">
+  
 [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-1f6feb?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/marcosyudikojima/)](https://www.linkedin.com/in/marcosyudikojima/)
+
 </div>
