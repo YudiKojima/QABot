@@ -4,11 +4,6 @@ namespace QABot.Page
 {
     public class SignUpPage : Begin
     {
-        public void OpenStageAppSpedy()
-        {
-            GoToUrl("https://stage-app.spedy.com.br/signup");
-        }
-
         public void WriteName()
         {
             WriteByName("name", "Bot");

@@ -8,7 +8,6 @@ namespace QABot.Test
         [Test]
         public void SignUp()
         {
-            OpenStageAppSpedy();
             WriteName();
             WriteEmail();
             WritePhoneNumber();
