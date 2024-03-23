@@ -6,17 +6,18 @@ namespace QABot.Page
     {
         public void WriteName()
         {
-            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[1]/input", "Bot", "o campo Seu nome completo");
+            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[1]/input", name, "o campo Seu nome completo");
         }
 
         public void WriteEmail()
         {
-            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[2]/input", "Teste@com.br", "o campo Seu endereço de e-mail");
+            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[2]/input", email, "o campo Seu endereço de e-mail");
         }
 
         public void WritePhoneNumber()
         {
-            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[3]/input", "66666666666", "o campo Celular");
+            var phoneNumber = GenerateRandomPhone();
+            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[3]/input", phoneNumber, "o campo Celular");
         }
 
         public void WritePassword()

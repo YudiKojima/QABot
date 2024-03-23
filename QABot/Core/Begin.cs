@@ -37,6 +37,8 @@ namespace QABot.Core
         public void Setup()
         {
             OpenNavigator();
+            name = GenerateName();
+            email = GenerateTempEmail();
             driver.Navigate().GoToUrl("https://stage-app.spedy.com.br/signup");
         }
         #endregion

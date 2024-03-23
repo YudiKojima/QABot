@@ -119,23 +119,70 @@ namespace QABot.Core
         #endregion
 
         #region Assignment Function
-        public string GenerateEmail()
+        public string GenerateName()
+        {
+            driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-de-pessoas");
+            ClickByElement("/html/body/main/div/div/div[1]/form/div[3]/div/button", "no botão Gerar Pessoa");
+            var nameElement = driver.FindElement(By.XPath("/html/body/main/div/div/div[2]/div[2]/section[1]/div[1]/input"));
+
+            return nameElement.GetAttribute("value");
+        }
+
+        public string GenerateTempEmail()
         {
             driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-email-temporario");
-            driver.Manage().Window.Maximize();
-            IWebElement emailElement = driver.FindElement(By.Id("email-input"));
+            var emailElement = driver.FindElement(By.XPath("//*[@id=\"email-input\"]"));
 
             return emailElement.GetAttribute("value");
+        }
+
+        public string GenerateCpf()
+        {
+            driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-de-cpf");
+            ClickByElement("//*[@id=\"pontuacao\"]", "no checkbox Pontuação");
+            ClickByElement("//*[@id=\"gerar\"]", "no botão Gerar CPF");
+            var cpfElement = driver.FindElement(By.XPath("//*[@id=\"cpf\"]"));
+
+            return cpfElement.GetAttribute("value");
         }
 
         public string GenerateCnpj()
         {
             driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-de-cnpj");
-            driver.Manage().Window.Maximize();
-            driver.FindElement(By.Id("gerar")).Click();
-            IWebElement cnpjElement = driver.FindElement(By.Id("cnpj"));
+            ClickByElement("//*[@id=\"gerar\"]", "no botão Gerar CNPJ");
+            var cnpjElement = driver.FindElement(By.XPath("//*[@id=\"cnpj\"]"));
 
             return cnpjElement.GetAttribute("value");
+        }
+
+        public string GenerateCep()
+        {
+            driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-de-cep");
+            ClickByElement("//*[@id=\"pontuacao\"]", "no checkbox Pontuação");
+            var cepElement = driver.FindElement(By.XPath("//*[@id=\"cep\"]"));
+
+            return cepElement.GetAttribute("value");
+        }
+
+        public static string GenerateRandomDate(int startYear = 1960, string outputDateFormat = "ddMMyyyy")
+        {
+            var start = new DateTime(startYear, 1, 1);
+            var gen = new Random(Guid.NewGuid().GetHashCode());
+            var range = (DateTime.Today - start).Days;
+            return start.AddDays(gen.Next(range)).ToString(outputDateFormat);
+        }
+
+        public static string GenerateRandomPhone()
+        {
+            var gen = new Random(Guid.NewGuid().GetHashCode());
+            var phoneNumber = string.Empty;
+
+            for (int i = 0; i < 11; i++)
+            {
+                phoneNumber = string.Concat(phoneNumber, gen.Next(10));
+            }
+
+            return phoneNumber;
         }
         #endregion
     }

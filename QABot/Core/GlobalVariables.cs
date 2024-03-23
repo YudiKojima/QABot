@@ -7,5 +7,8 @@ namespace QABot.Core
         public IWebDriver driver;
         public bool driverQuit = true;
         public bool headlessTest = false;
+
+        public string name = string.Empty;
+        public string email = string.Empty;
     }
 }
