@@ -6,27 +6,27 @@ namespace QABot.Page
     {
         public void WriteName()
         {
-            WriteByName("name", "Bot");
+            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[1]/input", "Bot", "o campo Seu nome completo");
         }
 
         public void WriteEmail()
         {
-            WriteByName("email", "X");
+            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[2]/input", "Teste@com.br", "o campo Seu endereço de e-mail");
         }
 
         public void WritePhoneNumber()
         {
-            WriteByName("phoneNumber", "66666666666");
+            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[3]/input", "66666666666", "o campo Celular");
         }
-        
+
         public void WritePassword()
         {
-            WriteByName("password", "teste123");
+            WriteByElement("//*[@id=\"input-visible\"]", "teste123", "o campo Sua senha");
         }
 
         public void ClickCheckBox()
         {
-            ClickByName("checkbox");
+            ClickByElement("//*[@id=\"root\"]/div/form/div[2]/input", "no checkbox Termos de uso");
         }
     }
 }

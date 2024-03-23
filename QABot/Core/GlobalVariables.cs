@@ -6,6 +6,6 @@ namespace QABot.Core
     {
         public IWebDriver driver;
         public bool driverQuit = true;
-        public bool headlessTest = true;
+        public bool headlessTest = false;
     }
 }

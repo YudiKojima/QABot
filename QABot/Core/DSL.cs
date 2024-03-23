@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
 namespace QABot.Core
@@ -49,17 +50,71 @@ namespace QABot.Core
         #endregion
 
         #region Interaction Function
-        #endregion
-
-        #region Assignment Function
-        public void WriteByName(string name, string value)
+        public void WriteByElement(string element, string value, string? description = null)
         {
-            driver.FindElement(By.Name(name)).SendKeys(value);
+            try
+            {
+                driver.FindElement(By.XPath(element)).SendKeys(value);
+
+                if (description != null)
+                {
+                    Console.WriteLine("Preencheu " + description);
+                }
+            }
+            catch
+            {
+                if (description != null)
+                {
+                    Console.WriteLine("Erro ao preencher " + description);
+                }
+
+                Assert.Fail();
+            }
         }
 
-        public void ClickByName(string name)
+        public void ClickByElement(string element, string? description = null)
         {
-            driver.FindElement(By.Name(name)).Click();
+            try
+            {
+                driver.FindElement(By.XPath(element)).Click();
+                Wait(1000);
+
+                if (description != null)
+                {
+                    Console.WriteLine("Clicou " + description);
+                }
+            }
+            catch
+            {
+                if (description != null)
+                {
+                    Console.WriteLine("Erro ao clicar " + description);
+                }
+
+                Assert.Fail();
+            }
+        }
+
+        public void ValidateData(string element, string value, string? description = null)
+        {
+            try
+            {
+                Assert.That(driver.FindElement(By.XPath(element)).Text, Does.Contain(value));
+
+                if (description != null)
+                {
+                    Console.WriteLine("Validou " + description);
+                }
+            }
+            catch
+            {
+                if (description != null)
+                {
+                    Console.WriteLine("Erro ao validar " + description);
+                }
+
+                Assert.Fail();
+            }
         }
 
         public string GenerateEmail()
@@ -80,6 +135,9 @@ namespace QABot.Core
 
             return cnpjElement.GetAttribute("value");
         }
+        #endregion
+
+        #region Assignment Function
         #endregion
     }
 }
