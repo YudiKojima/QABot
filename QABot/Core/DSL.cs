@@ -12,7 +12,7 @@ namespace QABot.Core
             Thread.Sleep(time);
         }
 
-        public void ClearData(string element)
+        public void ClearValue(string element)
         {
             driver.FindElement(By.XPath(element)).Clear();
         }
@@ -34,7 +34,7 @@ namespace QABot.Core
             wait.Until((d) => d.FindElements(By.XPath(element)).Count == 0);
         }
 
-        public bool ValidElementExist(string element)
+        public bool ValidateElementExist(string element)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace QABot.Core
             }
         }
 
-        public void ValidateData(string element, string value, string? description = null)
+        public void ValidateValue(string element, string value, string? description = null)
         {
             try
             {
@@ -116,7 +116,9 @@ namespace QABot.Core
                 Assert.Fail();
             }
         }
+        #endregion
 
+        #region Assignment Function
         public string GenerateEmail()
         {
             driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-email-temporario");
@@ -135,9 +137,6 @@ namespace QABot.Core
 
             return cnpjElement.GetAttribute("value");
         }
-        #endregion
-
-        #region Assignment Function
         #endregion
     }
 }
