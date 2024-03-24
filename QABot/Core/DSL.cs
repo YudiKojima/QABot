@@ -50,11 +50,17 @@ namespace QABot.Core
         #endregion
 
         #region Interaction Function
-        public void WriteByElement(string element, string value, string? description = null)
+        public void WriteByElement(string element, string value, string? description = null, bool pressEnter = false)
         {
             try
             {
                 driver.FindElement(By.XPath(element)).SendKeys(value);
+
+                if (pressEnter)
+                {
+                    Wait(1500);
+                    driver.FindElement(By.XPath(element)).SendKeys(Keys.Enter);
+                }
 
                 if (description != null)
                 {

@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace QABot.Core
@@ -39,7 +38,13 @@ namespace QABot.Core
             OpenNavigator();
             name = GenerateName();
             email = GenerateTempEmail();
-            driver.Navigate().GoToUrl("https://stage-app.spedy.com.br/signup");
+            federalTaxNumber = GenerateCnpj();
+            postalCode = GenerateCep();
+            //name = "Yudi teste";
+            //email = "marcos10@spedy.br";
+            //federalTaxNumber = "85317578000129";
+            //postalCode = "78068670";
+            driver.Navigate().GoToUrl(URL);
         }
         #endregion
 

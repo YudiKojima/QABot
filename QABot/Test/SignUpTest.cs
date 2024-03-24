@@ -13,6 +13,11 @@ namespace QABot.Test
             WritePhoneNumber();
             WritePassword();
             ClickCheckBox();
+            ClickAccessButton();
+            ClickContinueButton();
+            WriteCompany();
+            WriteAddress();
+            ClickAdvanceeButton();
         }
     }
 }
