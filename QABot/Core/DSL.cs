@@ -164,8 +164,9 @@ namespace QABot.Core
         public string GenerateCep()
         {
             driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-de-cep");
-            ClickByElement("//*[@id=\"pontuacao\"]", "no checkbox Pontuação");
-            var cepElement = driver.FindElement(By.XPath("//*[@id=\"cep\"]"));
+            ClickByElement("//input[@id=\"pontuacao\"]", "no checkbox Pontuação");
+            ClickByElement("//button[@id=\"gerar\"]", "no botão Gerar CEP");
+            var cepElement = driver.FindElement(By.XPath("//input[@id=\"cep\"]"));
 
             return cepElement.GetAttribute("value");
         }

@@ -40,10 +40,6 @@ namespace QABot.Core
             email = GenerateTempEmail();
             federalTaxNumber = GenerateCnpj();
             postalCode = GenerateCep();
-            //name = "Yudi teste";
-            //email = "marcos10@spedy.br";
-            //federalTaxNumber = "85317578000129";
-            //postalCode = "78068670";
             driver.Navigate().GoToUrl(URL);
         }
         #endregion

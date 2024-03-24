@@ -13,5 +13,16 @@ namespace QABot.Core
         public string email = string.Empty;
         public string federalTaxNumber = string.Empty;
         public string postalCode = string.Empty;
+
+        public enum SubscriptionPlan
+        {
+            Free,
+            EssentialMonthly,
+            AdvancedMonthly,
+            ProfessionalMonthly,
+            EssentialYearly,
+            AdvancedYearly,
+            ProfessionalYearly,
+        }
     }
 }
