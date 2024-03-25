@@ -38,7 +38,7 @@ namespace QABot.Page
 
         public void ClickContinueButton()
         {
-            Wait(5000);
+            Wait(10000);
             ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div/div[2]/button[2]", "no botão Já tenho uma empresa");
         }
 
