@@ -67,11 +67,11 @@ namespace QABot.Core
                     Console.WriteLine("Preencheu " + description);
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 if (description != null)
                 {
-                    Console.WriteLine("Erro ao preencher " + description);
+                    Console.WriteLine("Erro ao preencher " + description + exceptionMessage + ex.Message);
                 }
 
                 Assert.Fail();
@@ -90,11 +90,11 @@ namespace QABot.Core
                     Console.WriteLine("Clicou " + description);
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 if (description != null)
                 {
-                    Console.WriteLine("Erro ao clicar " + description);
+                    Console.WriteLine("Erro ao clicar " + description + exceptionMessage + ex.Message);
                 }
 
                 Assert.Fail();
@@ -112,11 +112,36 @@ namespace QABot.Core
                     Console.WriteLine("Validou " + description);
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 if (description != null)
                 {
-                    Console.WriteLine("Erro ao validar " + description);
+                    Console.WriteLine("Erro ao validar " + description + exceptionMessage + ex.Message);
+                }
+
+                Assert.Fail();
+            }
+        }
+
+        public void DropDownMenu(string element, string value, string? description = null)
+        {
+            try
+            {
+                string xPathElement = "//*[text()='" + value + "']";
+                ClickByElement(element);
+                WaitElement(xPathElement);
+                ClickByElement(xPathElement);
+
+                if (description != null)
+                {
+                    Console.WriteLine("Selecionou menu DropDown " + description);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (description != null)
+                {
+                    Console.WriteLine("Erro ao selecionar menu DropDown " + description + exceptionMessage + ex.Message);
                 }
 
                 Assert.Fail();
@@ -128,6 +153,7 @@ namespace QABot.Core
         public string GenerateName()
         {
             driver.Navigate().GoToUrl("https://www.invertexto.com/gerador-de-pessoas");
+            DropDownMenu("//select[@name=\"country\"]", "Brasil", "Nacionalidade");
             ClickByElement("/html/body/main/div/div/div[1]/form/div[3]/div/button", "no botão Gerar Pessoa");
             var nameElement = driver.FindElement(By.XPath("/html/body/main/div/div/div[2]/div[2]/section[1]/div[1]/input"));
 

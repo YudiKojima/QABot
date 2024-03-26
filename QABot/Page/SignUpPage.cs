@@ -38,7 +38,7 @@ namespace QABot.Page
 
         public void ClickContinueButton()
         {
-            Wait(10000);
+            WaitElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div/div[2]/button[2]");
             ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div/div[2]/button[2]", "no botão Já tenho uma empresa");
         }
 
@@ -72,8 +72,6 @@ namespace QABot.Page
 
             if (cep.GetAttribute("value").Length != 0)
             {
-                ClearValue("//input[@id=\"address_number\"]");
-                WriteByElement("//input[@id=\"address_number\"]", "123", "o campo Número");
                 return;
             }
 
