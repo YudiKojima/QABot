@@ -24,5 +24,12 @@ namespace QABot.Core
             AdvancedYearly,
             ProfessionalYearly,
         }
+
+        public enum InvoiceModel
+        {
+            ServiceInvoice,
+            ProductInvoice,
+            Split
+        }
     }
 }
