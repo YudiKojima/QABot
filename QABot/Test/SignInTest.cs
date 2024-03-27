@@ -8,6 +8,7 @@ namespace QABot.Test
         [Test]
         public void SignUp()
         {
+            OpeningSpedySignIn();
             WriteEmail();
             WritePassword();
             ClickAccessButton();

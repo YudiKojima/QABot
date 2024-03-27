@@ -36,11 +36,6 @@ namespace QABot.Core
         public void Setup()
         {
             OpenNavigator();
-            name = GenerateName();
-            email = GenerateTempEmail();
-            federalTaxNumber = GenerateCnpj();
-            postalCode = GenerateCep();
-            driver.Navigate().GoToUrl(URL);
         }
         #endregion
 

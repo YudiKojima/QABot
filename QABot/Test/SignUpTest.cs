@@ -8,6 +8,7 @@ namespace QABot.Test
         [Test]
         public void SignUp()
         {
+            OpeningSpedySignUp();
             WriteName();
             WriteEmail();
             WritePhoneNumber();
@@ -18,8 +19,9 @@ namespace QABot.Test
             WriteCompany();
             WriteAddress();
             ClickAdvanceButton();
-            SelectSubscriptionPlan(SubscriptionPlan.EssentialYearly);
+            SelectSubscriptionPlan(SubscriptionPlan.EssentialMonthly);
             ClickConfirmButton();
+            ClickDashBoardButton();
         }
     }
 }

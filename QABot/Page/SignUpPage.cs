@@ -5,14 +5,23 @@ namespace QABot.Page
 {
     public class SignUpPage : Begin
     {
+        public void OpeningSpedySignUp()
+        {
+            signUpName = GenerateName();
+            signUpEmail = GenerateTempEmail();
+            signUpFederalTaxNumber = GenerateCnpj();
+            signUpPostalCode = GenerateCep();
+            driver.Navigate().GoToUrl("http://localhost:3000/signup");
+        }
+
         public void WriteName()
         {
-            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[1]/input", name, "o campo Seu nome completo");
+            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[1]/input", signUpName, "o campo Seu nome completo");
         }
 
         public void WriteEmail()
         {
-            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[2]/input", email, "o campo Seu endereço de e-mail");
+            WriteByElement("//*[@id=\"root\"]/div/form/fieldset/div[2]/input", signUpEmail, "o campo Seu endereço de e-mail");
         }
 
         public void WritePhoneNumber()
@@ -39,12 +48,13 @@ namespace QABot.Page
         public void ClickContinueButton()
         {
             WaitElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div/div[2]/button[2]");
+            Wait(1000);
             ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div/div[2]/button[2]", "no botão Já tenho uma empresa");
         }
 
         public void WriteCompany()
         {
-            WriteByElement("//input[@id=\"federalTaxNumber\"]", federalTaxNumber, "o campo CNPJ");
+            WriteByElement("//input[@id=\"federalTaxNumber\"]", signUpFederalTaxNumber, "o campo CNPJ");
             Wait(4000);
 
             var legalName = driver.FindElement(By.XPath("//input[@id=\"legalName\"]"));
@@ -75,7 +85,7 @@ namespace QABot.Page
                 return;
             }
 
-            WriteByElement("//input[@id=\"address_postalCode\"]", postalCode, "o campo CEP");
+            WriteByElement("//input[@id=\"address_postalCode\"]", signUpPostalCode, "o campo CEP");
             Wait(4000);
 
             var street = driver.FindElement(By.XPath("//input[@id=\"address_street\"]"));
@@ -118,37 +128,37 @@ namespace QABot.Page
             if (plan == SubscriptionPlan.EssentialMonthly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div/div/div[2]/button", "no botão Assinar Essencial Mensal");
-                WriteCreditCardInfo(false);
+                WriteCreditCardInfo();
             }
 
             if (plan == SubscriptionPlan.AdvancedMonthly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/div/div/div[2]/button", "no botão Assinar Avançado Mensal");
-                WriteCreditCardInfo(false);
+                WriteCreditCardInfo();
             }
 
             if (plan == SubscriptionPlan.ProfessionalMonthly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/div/div[2]/button", "no botão Assinar Profissional Mensal");
-                WriteCreditCardInfo(false);
+                WriteCreditCardInfo();
             }
 
             if (plan == SubscriptionPlan.EssentialYearly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div/div/div[2]/button", "no botão Assinar Essencial Anual");
-                WriteCreditCardInfo(false, true);
+                WriteCreditCardInfo(true);
             }
 
             if (plan == SubscriptionPlan.AdvancedYearly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/div/div/div[2]/button", "no botão Assinar Avançado Anual");
-                WriteCreditCardInfo(false, true);
+                WriteCreditCardInfo(true);
             }
 
             if (plan == SubscriptionPlan.ProfessionalYearly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/div/div[2]/button", "no botão Assinar Profissional Anual");
-                WriteCreditCardInfo(false, true);
+                WriteCreditCardInfo(true);
             }
         }
 
@@ -157,11 +167,21 @@ namespace QABot.Page
             ClickByElement("//*[@id=\"checkout\"]/div[2]/button[2]", "no botão Confirmar pagamento");
         }
 
-        private void WriteCreditCardInfo(bool invalidNumber, bool yearly = false)
+        public void ClickDashBoardButton()
         {
-            ClickByElement("//*[@id=\"checkout\"]/div[1]/div[2]/div[2]/div/div/div/div/div[1]/div", "na opção Cartão de crédito");
-            WriteByElement("//input[@id=\"paymentMethod_number\"]",
-                invalidNumber ? "4242424242424242" : "4111111111111111", "o campo Número do Cartão");
+            WaitElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[2]/button");
+            Wait(1000);
+            ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[2]/button", "no botão Ir para o dashboard");
+        }
+
+        private void WriteCreditCardInfo(bool yearly = false)
+        {
+            if (yearly)
+            {
+                ClickByElement("//*[@id=\"checkout\"]/div[1]/div[2]/div[2]/div/div/div/div/div[1]/div", "na opção Cartão de crédito");
+            }
+            Wait(1000);
+            WriteByElement("//input[@id=\"paymentMethod_number\"]", "4111111111111111", "o campo Número do Cartão");
             WriteByElement("//input[@id=\"paymentMethod_cardholderName\"]", "Teste Teste", "o campo Nome do titular");
             WriteByElement("//input[@id=\"paymentMethod_expirationDate\"]", "062025", "o campo Data de Validade");
             ClickByElement("//input[@id=\"paymentMethod_securityCode\"]", "no campo Código de Segurança");

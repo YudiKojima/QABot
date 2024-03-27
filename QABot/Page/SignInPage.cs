@@ -4,6 +4,11 @@ namespace QABot.Page
 {
     public class SignInPage : Begin
     {
+        public void OpeningSpedySignIn()
+        {
+            driver.Navigate().GoToUrl("http://localhost:3000/signin");
+        }
+
         public void WriteEmail()
         {
             WriteByElement("//input[@name=\"email\"]", "marcos.silva@spedy.com.br", "o campo Seu endereço de e-mail");

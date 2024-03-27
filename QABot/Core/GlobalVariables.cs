@@ -9,11 +9,10 @@ namespace QABot.Core
         public bool headlessTest = false;
         public string exceptionMessage = "\nSelenium Message Error: ";
 
-        public string URL = "http://localhost:3000/signup";
-        public string name = string.Empty;
-        public string email = string.Empty;
-        public string federalTaxNumber = string.Empty;
-        public string postalCode = string.Empty;
+        public string signUpName = string.Empty;
+        public string signUpEmail = string.Empty;
+        public string signUpFederalTaxNumber = string.Empty;
+        public string signUpPostalCode = string.Empty;
 
         public enum SubscriptionPlan
         {
