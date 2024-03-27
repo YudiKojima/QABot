@@ -218,5 +218,16 @@ namespace QABot.Core
             return phoneNumber;
         }
         #endregion
+
+        #region Global Function
+        public virtual void SignInSpedy()
+        {
+            driver.Navigate().GoToUrl("http://localhost:3000/signin");
+            WriteByElement("//input[@name=\"email\"]", "marcos.silva@spedy.com.br", "o campo Seu endereço de e-mail");
+            WriteByElement("//input[@name=\"password\"]", "teste123", "o campo Sua senha");
+            ClickByElement("//*[@id=\"root\"]/div/form/button", "no botão Acessar");
+        }
+
+        #endregion
     }
 }

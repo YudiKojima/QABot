@@ -6,12 +6,9 @@ namespace QABot.Test
     public class SignInTest : SignInPage
     {
         [Test]
-        public void SignUp()
+        public void SignIn()
         {
-            OpeningSpedySignIn();
-            WriteEmail();
-            WritePassword();
-            ClickAccessButton();
+            LoginSpedy();
         }
     }
 }

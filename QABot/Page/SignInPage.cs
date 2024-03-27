@@ -4,24 +4,9 @@ namespace QABot.Page
 {
     public class SignInPage : Begin
     {
-        public void OpeningSpedySignIn()
+        public void LoginSpedy()
         {
-            driver.Navigate().GoToUrl("http://localhost:3000/signin");
-        }
-
-        public void WriteEmail()
-        {
-            WriteByElement("//input[@name=\"email\"]", "marcos.silva@spedy.com.br", "o campo Seu endereço de e-mail");
-        }
-
-        public void WritePassword()
-        {
-            WriteByElement("//input[@name=\"password\"]", "teste123", "o campo Sua senha");
-        }
-
-        public void ClickAccessButton()
-        {
-            ClickByElement("//*[@id=\"root\"]/div/form/button", "no botão Acessar");
+            SignInSpedy();
         }
     }
 }
