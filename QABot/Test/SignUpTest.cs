@@ -19,8 +19,7 @@ namespace QABot.Test
             WriteCompany();
             WriteAddress();
             ClickAdvanceButton();
-            SelectSubscriptionPlan(SubscriptionPlan.EssentialMonthly);
-            ClickConfirmButton();
+            SelectSubscriptionPlan(SubscriptionPlan.Free);
             ClickDashBoardButton();
         }
     }

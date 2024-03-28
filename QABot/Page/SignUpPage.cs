@@ -160,18 +160,26 @@ namespace QABot.Page
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/div/div[2]/button", "no botão Assinar Profissional Anual");
                 WriteCreditCardInfo(true);
             }
+
+            ClickConfirmButton(plan);
         }
 
-        public void ClickConfirmButton()
-        {
-            ClickByElement("//*[@id=\"checkout\"]/div[2]/button[2]", "no botão Confirmar pagamento");
-        }
 
         public void ClickDashBoardButton()
         {
             WaitElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[2]/button");
             Wait(1000);
             ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[2]/button", "no botão Ir para o dashboard");
+        }
+
+        private void ClickConfirmButton(SubscriptionPlan plan)
+        {
+            if (plan == SubscriptionPlan.Free)
+            {
+                return;
+            }
+
+            ClickByElement("//*[@id=\"checkout\"]/div[2]/button[2]", "no botão Confirmar pagamento");
         }
 
         private void WriteCreditCardInfo(bool yearly = false)
