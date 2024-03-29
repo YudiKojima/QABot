@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using QABot.Core;
+using System.Numerics;
 
 namespace QABot.Page
 {
@@ -128,37 +129,37 @@ namespace QABot.Page
             if (plan == SubscriptionPlan.EssentialMonthly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div/div/div[2]/button", "no botão Assinar Essencial Mensal");
-                WriteCreditCardInfo();
+                WriteCreditCardInfo(paymentMethod);
             }
 
             if (plan == SubscriptionPlan.AdvancedMonthly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/div/div/div[2]/button", "no botão Assinar Avançado Mensal");
-                WriteCreditCardInfo();
+                WriteCreditCardInfo(paymentMethod);
             }
 
             if (plan == SubscriptionPlan.ProfessionalMonthly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/div/div[2]/button", "no botão Assinar Profissional Mensal");
-                WriteCreditCardInfo();
+                WriteCreditCardInfo(paymentMethod);
             }
 
             if (plan == SubscriptionPlan.EssentialYearly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/div/div/div[2]/button", "no botão Assinar Essencial Anual");
-                WriteCreditCardInfo(true);
+                WriteCreditCardInfo(paymentMethod, true);
             }
 
             if (plan == SubscriptionPlan.AdvancedYearly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/div/div/div[2]/button", "no botão Assinar Avançado Anual");
-                WriteCreditCardInfo(true);
+                WriteCreditCardInfo(paymentMethod,true);
             }
 
             if (plan == SubscriptionPlan.ProfessionalYearly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/div/div/div[2]/button", "no botão Assinar Profissional Anual");
-                WriteCreditCardInfo(true);
+                WriteCreditCardInfo(paymentMethod, true);
             }
 
             ClickConfirmButton(plan);
@@ -184,7 +185,9 @@ namespace QABot.Page
 
         private void WriteCreditCardInfo(PaymentMethod paymentMethod, bool yearly = false)
         {
-            if (yearly)
+            var hasOnePaymentMethod = ValidateOneFlagSet(paymentMethod);
+
+            if (!hasOnePaymentMethod)
             {
                 ClickByElement("//*[@id=\"checkout\"]/div[1]/div[2]/div[2]/div/div/div/div/div[1]/div", "na opção Cartão de crédito");
             }
@@ -201,6 +204,11 @@ namespace QABot.Page
                 ClickByElement("//input[@id=\"paymentMethod_installments\"]", "a Seleção Parcelamento");
                 ClickByElement("/html/body/div[4]/div/div/div/div[2]/div/div/div/div[1]/div", "a Opção 1x");
             }
+        }
+
+        private static bool ValidateOneFlagSet(PaymentMethod paymentMethod)
+        {
+            return BitOperations.PopCount((ulong)paymentMethod) == 1;
         }
     }
 }
