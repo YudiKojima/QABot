@@ -19,7 +19,7 @@ namespace QABot.Test
             WriteCompany();
             WriteAddress();
             ClickAdvanceButton();
-            SelectSubscriptionPlan(SubscriptionPlan.Free);
+            SelectSubscriptionPlan(SubscriptionPlan.EssentialMonthly, PaymentMethod.CreditCard | PaymentMethod.Pix);
             ClickDashBoardButton();
         }
     }

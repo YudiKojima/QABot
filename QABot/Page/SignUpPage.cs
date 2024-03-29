@@ -113,7 +113,7 @@ namespace QABot.Page
             ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/button[2]", "no botão Avançar");
         }
 
-        public void SelectSubscriptionPlan(SubscriptionPlan plan)
+        public void SelectSubscriptionPlan(SubscriptionPlan plan, PaymentMethod paymentMethod)
         {
             if (plan == SubscriptionPlan.EssentialYearly || plan == SubscriptionPlan.AdvancedYearly || plan == SubscriptionPlan.ProfessionalYearly)
             {
@@ -182,12 +182,13 @@ namespace QABot.Page
             ClickByElement("//*[@id=\"checkout\"]/div[2]/button[2]", "no botão Confirmar pagamento");
         }
 
-        private void WriteCreditCardInfo(bool yearly = false)
+        private void WriteCreditCardInfo(PaymentMethod paymentMethod, bool yearly = false)
         {
             if (yearly)
             {
                 ClickByElement("//*[@id=\"checkout\"]/div[1]/div[2]/div[2]/div/div/div/div/div[1]/div", "na opção Cartão de crédito");
             }
+
             Wait(1000);
             WriteByElement("//input[@id=\"paymentMethod_number\"]", "4111111111111111", "o campo Número do Cartão");
             WriteByElement("//input[@id=\"paymentMethod_cardholderName\"]", "Teste Teste", "o campo Nome do titular");

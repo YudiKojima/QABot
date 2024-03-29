@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace QABot.Core
 {
@@ -30,6 +31,14 @@ namespace QABot.Core
             ServiceInvoice,
             ProductInvoice,
             Split
+        }
+
+        [Flags]
+        public enum PaymentMethod
+        {
+            CreditCard = 1,
+            Billet = 2,
+            Pix = 4
         }
     }
 }
