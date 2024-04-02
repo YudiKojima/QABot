@@ -8,7 +8,7 @@ namespace QABot.Test
         [Test]
         public void SignIn()
         {
-            LoginSpedy();
+            Login();
         }
     }
 }

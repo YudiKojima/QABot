@@ -4,9 +4,9 @@ namespace QABot.Page
 {
     public class SignInPage : Begin
     {
-        public void LoginSpedy()
+        public void Login()
         {
-            SignInSpedy();
+            LoginSpedy();
         }
     }
 }

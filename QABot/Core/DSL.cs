@@ -220,12 +220,22 @@ namespace QABot.Core
         #endregion
 
         #region Global Function
-        public virtual void SignInSpedy()
+        public virtual void LoginSpedy()
         {
             driver.Navigate().GoToUrl("http://localhost:3000/signin");
             WriteByElement("//input[@name=\"email\"]", "marcos.silva@spedy.com.br", "o campo Seu endereço de e-mail");
             WriteByElement("//input[@name=\"password\"]", "teste123", "o campo Sua senha");
             ClickByElement("//*[@id=\"root\"]/div/form/button", "no botão Acessar");
+        }
+
+        public virtual void SearchAccount()
+        {
+            WaitElement("//input[@id=\"filterText\"]");
+            WriteByElement("//input[@id=\"filterText\"]", "nfe", "o campo Pesquisar conta...");
+            Wait(2000);
+            ValidateElementExist("//*[@id=\"root\"]/section/section/main/div[2]/div/div/div/div/div/div/div/div/div/div/table/tbody/tr[2]/td[1]/div/div[1]");
+            DropDownMenu("//*[@id=\"root\"]/section/section/main/div[2]/div/div/div/div/div/div/div/div/div/div/table/tbody/tr[2]/td[6]/i",
+                "Acessar conta", "Opções");
         }
 
         #endregion

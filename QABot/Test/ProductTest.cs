@@ -6,11 +6,18 @@ namespace QABot.Test
     public class ProductTest : ProductPage
     {
         [Test]
-        public void CreateProduct()
+        public void Create()
         {
-            LoginSpedy();
-            SearchAccount();
-            NewProduct(InvoiceModel.ProductInvoice);
+            Login();
+            SelectAccount();
+            New(InvoiceModel.ProductInvoice);
+        }
+
+        [Test]
+        public void Edit()
+        {
+            Create();
+            EditNew();
         }
     }
 }
