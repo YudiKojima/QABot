@@ -12,7 +12,7 @@ namespace QABot.Page
             signUpEmail = GenerateTempEmail();
             signUpFederalTaxNumber = GenerateCnpj();
             signUpPostalCode = GenerateCep();
-            driver.Navigate().GoToUrl("http://localhost:3000/signup");
+            driver.Navigate().GoToUrl("https://stage-app.spedy.com.br/signup");
         }
 
         public void WriteName()
@@ -114,7 +114,7 @@ namespace QABot.Page
             ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/button[2]", "no botão Avançar");
         }
 
-        public void SelectSubscriptionPlan(SubscriptionPlan plan, PaymentMethod paymentMethod)
+        public void SelectSubscriptionPlan(SubscriptionPlan plan, PaymentMethod? paymentMethod)
         {
             if (plan == SubscriptionPlan.EssentialYearly || plan == SubscriptionPlan.AdvancedYearly || plan == SubscriptionPlan.ProfessionalYearly)
             {
@@ -153,7 +153,7 @@ namespace QABot.Page
             if (plan == SubscriptionPlan.AdvancedYearly)
             {
                 ClickByElement("/html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/div/div/div[2]/button", "no botão Assinar Avançado Anual");
-                WriteCreditCardInfo(paymentMethod,true);
+                WriteCreditCardInfo(paymentMethod, true);
             }
 
             if (plan == SubscriptionPlan.ProfessionalYearly)
@@ -183,7 +183,7 @@ namespace QABot.Page
             ClickByElement("//*[@id=\"checkout\"]/div[2]/button[2]", "no botão Confirmar pagamento");
         }
 
-        private void WriteCreditCardInfo(PaymentMethod paymentMethod, bool yearly = false)
+        private void WriteCreditCardInfo(PaymentMethod? paymentMethod, bool yearly = false)
         {
             var hasOnePaymentMethod = ValidateOneFlagSet(paymentMethod);
 
@@ -206,9 +206,9 @@ namespace QABot.Page
             }
         }
 
-        private static bool ValidateOneFlagSet(PaymentMethod paymentMethod)
+        private static bool ValidateOneFlagSet(PaymentMethod? paymentMethod)
         {
-            return BitOperations.PopCount((ulong)paymentMethod) == 1;
+            return BitOperations.PopCount((ulong)paymentMethod!) == 1;
         }
     }
 }
